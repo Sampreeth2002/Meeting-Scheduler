@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Meeting Scheduler</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="/stylesheets/main.css" />
+  </head>
+
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/meeting">Meeting Scheduler</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <% if(!currentUser) { %>
+            <li><a href="/login">Login</a></li>
+            <li><a href="/register">Sign up</a></li>
+            <% } else { %>
+            <li><a href="#">Signed In As <%= currentUser.username %></a></li>
+            <li><a href="/logout">Logout</a></li>
+            <% } %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Begin page content -->
+    <div class="container">
+      <div class="page-header">
+        <h1><%=meeting.name %></h1>
+      </div>
+      <p class="lead">Title of Meeting : <%=meeting.title%></p>
+      <p class="lead">
+        Date of Meeting :
+        <code
+          ><%=meeting.date.getDate()%>-<%=meeting.date.getMonth()%>-<%=meeting.date.getUTCFullYear()%></code
+        >
+      </p>
+      <p class="lead">
+        Time of Meeting :
+        <code><%=meeting.date.getHours()%>:<%=meeting.date.getMinutes()%></code>
+      </p>
+      <p class="lead">
+        Creation of Meeting :
+        <%=meeting.created.getDate()%>-<%=meeting.created.getMonth()%>-<%=meeting.created.getUTCFullYear()%>
+      </p>
+      <form action="/mail" method="POST">
+        <input
+          type="text"
+          style="display: none;"
+          name="mail[name]"
+          value="<%=meeting.name %>"
+        />
+        <p class="lead"><strong>Send Conformation Mail to very one</strong></p>
+        <button class="btn btn-info">Send Mail</button>
+      </form>
+      <br />
+
+      <form action="/reminderName" method="POST">
+        <input
+          type="text"
+          style="display: none;"
+          name="meetingName"
+          value="<%=meeting.name %>"
+        />
+        <p class="lead"><strong>Send a Reminder Mail to very one</strong></p>
+        <button class="btn btn-info">Send Mail</button>
+      </form>
+      <br />
+
+      <p class="lead"><strong>Send Attendence Mail</strong></p>
+
+      <% meeting.email.forEach((member)=>{ %>
+      <div class="row">
+        <div class="col-md-4">
+          <p class="lead"><%= member.recipientName %></p>
+        </div>
+        <form action="/individualMail" method="POST">
+          <input
+            type="text"
+            style="display: none;"
+            name="individualMail[subject]"
+            value="Attendence for the meeting"
+          />
+          <input
+            type="text"
+            style="display: none;"
+            name="individualMail[text]"
+            value="You have Attendent the meeting!!"
+          />
+          <input
+            type="text"
+            style="display: none;"
+            name="individualMail[email]"
+            value="<%= member.emailId %>"
+          />
+          <input
+            type="text"
+            style="display: none;"
+            name="individualMail[id]"
+            value="<%= meeting._id %>"
+          />
+          <div class="col-md-4">
+            <button class="btn btn-info">Send Attendence mail</button>
+            <br />
+          </div>
+        </form>
+      </div>
+      <% }) %>
+      <br /><br /><br />
+      <div>
+        <a
+          class="btn btn-warning col-md-1"
+          href="/meeting/<%=meeting._id%>/edit"
+          >EDIT</a
+        >
+        <form action="/meeting/<%=meeting._id%>?_method=DELETE" method="POST">
+          <button class="btn btn-danger col-md-1" style="margin-left: 10px;">
+            DELETE
+          </button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

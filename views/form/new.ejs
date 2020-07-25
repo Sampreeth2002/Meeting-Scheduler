@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Meeting Scheduler</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="/stylesheets/main.css" />
+  </head>
+
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/meeting">Meeting Scheduler</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <% if(!currentUser) { %>
+            <li><a href="/login">Login</a></li>
+            <li><a href="/register">Sign up</a></li>
+            <% } else { %>
+            <li><a href="#">Signed In As <%= currentUser.username %></a></li>
+            <li><a href="/logout">Logout</a></li>
+            <% } %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <h1 style="text-align: center;">New Meeting</h1>
+        <div style="width: 30%; margin: 25px auto;">
+          <form action="/meeting" method="POST">
+            <div class="form-group">
+              <input
+                class="form-control members"
+                type="number"
+                name="meeting[num]"
+                placeholder="Enter number of people"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <input
+                class="form-control"
+                type="text"
+                name="meeting[name]"
+                placeholder="Meeting name (define unique name for every meeting)"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <input
+                class="form-control"
+                type="text"
+                name="meeting[title]"
+                placeholder="Enter Subject for mailing"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <input
+                class="form-control"
+                type="text"
+                name="meeting[message]"
+                placeholder="Enter Message for mailing"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <input
+                class="form-control"
+                type="datetime-local"
+                name="meeting[date]"
+                placeholder="Enter data and time"
+                required
+              />
+            </div>
+            <div class="membermails"></div>
+            <div class="form-group">
+              <button class="btn btn-lg btn-primary btn-block">Submit!</button>
+            </div>
+          </form>
+          <a href="/meeting">Go back</a>
+        </div>
+      </div>
+    </div>
+    <script>
+      var members = document.querySelector(".members");
+      var membermails = document.querySelector(".membermails");
+
+      members.addEventListener("change", () => {
+        console.log("counter");
+        var i = 0;
+        var num = members.value;
+        membermails.innerHTML = "";
+        for (i = 0; i < num; i++) {
+          membermails.innerHTML += `<br /> <div class="form-group"> <input type="text" class="form-control" name="meeting[email][${i}][recipientName]" placeholder="Enter name of Person ${
+            i + 1
+          }" /> 
+          <br />
+          <input type="email" class="form-control" name="meeting[email][${i}][emailId]" placeholder="Enter email id ${
+            i + 1
+          } " required /> 
+           </div>
+          `;
+        }
+      });
+    </script>
+  </body>
+</html>

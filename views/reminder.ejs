@@ -1,0 +1,84 @@
+<!-- <div class="ui main text container segment">
+  <div class="ui huge header">New Metting</div>
+  <form action="/reminder" method="POST">
+    <input type="text" name="reminder[name]" value="<%=meetingName %>" />
+    <input
+      type="text"
+      name="reminder[subject]"
+      placeholder="Enter subject of mail"
+    />
+    <input type="text" name="reminder[message]" placeholder="Enter message" />
+    <input type="submit" />
+  </form>
+</div> -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Meeting Scheduler</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="/stylesheets/main.css" />
+  </head>
+
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/meeting">Meeting Scheduler</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <% if(!currentUser) { %>
+            <li><a href="/login">Login</a></li>
+            <li><a href="/register">Sign up</a></li>
+            <% } else { %>
+            <li><a href="#">Signed In As <%= currentUser.username %></a></li>
+            <li><a href="/logout">Logout</a></li>
+            <% } %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <h1 style="text-align: center;">Reminder Mail</h1>
+        <div style="width: 30%; margin: 25px auto;">
+          <form action="/reminder" method="POST">
+            <div class="form-group">
+              <input
+                class="form-control"
+                style="display: none;"
+                type="text"
+                name="reminder[name]"
+                placeholder="Enter name"
+                value="<%=meetingName%>"
+              />
+            </div>
+            <div class="form-group">
+              <input
+                class="form-control"
+                type="text"
+                name="reminder[subject]"
+                placeholder="Enter subject of mail"
+              />
+            </div>
+            <div class="form-group">
+              <input
+                class="form-control"
+                type="text"
+                name="reminder[message]"
+                placeholder="Enter message"
+              />
+            </div>
+            <div class="form-group">
+              <button class="btn btn-lg btn-primary btn-block">Submit!</button>
+            </div>
+          </form>
+          <a href="/meeting">Go upcoming back</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

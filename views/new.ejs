@@ -1,0 +1,73 @@
+<!-- <h1>Welcome <%= currentUser.username %></h1>
+<h2>Your Upcoming Meetings!</h2>
+<p>No meetings yet!</p>
+<a href="/meeting/new">New Meeting</a>
+<% if(!currentUser){ %>
+<a href="/register">Sign Up</a>
+<br />
+<a href="/login">Login</a>
+<% }else{ %>
+<br />
+<a href="/logout">Log Out</a>
+<% } %> -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Meeting Scheduler</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="/stylesheets/main.css" />
+  </head>
+
+  <body>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/meeting">Meeting Scheduler</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <% if(!currentUser) { %>
+            <li><a href="/login">Login</a></li>
+            <li><a href="/register">Sign up</a></li>
+            <% } else { %>
+            <li><a href="#">Signed In As <%= currentUser.username %></a></li>
+            <li><a href="/logout">Logout</a></li>
+            <% } %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <header class="jumbotron">
+        <div class="container">
+          <h1>Welcome to Meeting Scheduler!</h1>
+          <p>Organise and create your meetings in best way!</p>
+          <p>
+            <a
+              class="btn-primary btn-lg"
+              href="/meeting/new"
+              style="text-decoration: none;"
+              >Add a new meeting</a
+            >
+            <a
+              class="btn-primary btn-lg"
+              href="/history"
+              style="text-decoration: none;"
+              >See previous meetings</a
+            >
+          </p>
+        </div>
+      </header>
+
+      <div class="row" style="display: block; flex-wrap: wrap;">
+        <h1>Your Upcoming Meetings!</h1>
+        <br /><br />
+        <a href="/meeting/new">Add new meeting</a>
+      </div>
+    </div>
+  </body>
+</html>
