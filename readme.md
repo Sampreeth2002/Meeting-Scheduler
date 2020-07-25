@@ -5,3 +5,4 @@ The organiser can create meeting by sign up an account and can create meeting.
 There can be many organiser by creating different accounts and each organiser can see the meeting he/she have created.
 At any time,the meeting can be edited or deleted before meeting starts.
 The organiser can even see the upcoming meetings and previous meetings he/she have created.
+You can start the project by typing "node index.js" or "npm run dev" and start server at "http://localhost:3000/" in your browser.
