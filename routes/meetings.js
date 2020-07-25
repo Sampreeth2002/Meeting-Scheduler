@@ -3,7 +3,7 @@ var router = express.Router();
 var Schedule = require("../models/meeting");
 
 router.get("/", (req, res) => {
-  res.redirect("/meeting");
+  res.redirect("/register");
 });
 
 router.get("/meeting", isLoggedIn, (req, res) => {
