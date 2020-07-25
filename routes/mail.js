@@ -6,8 +6,8 @@ var nodemailer = require("nodemailer");
 let transpoter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "sampreeth0203@gmail.com",
-    pass: "sam@2002",
+    user: "meetingscheduler2000@gmail.com",
+    pass: "test123@",
   },
 });
 
@@ -35,7 +35,7 @@ router.post("/reminder", isLoggedIn, (req, res) => {
       console.log(err);
     } else {
       let mailOptions = {
-        from: "sampreeth0203@gmail.com",
+        from: "meetingscheduler2000@gmail.com",
         subject: req.body.reminder.subject,
         text: req.body.reminder.message,
       };
@@ -64,7 +64,7 @@ router.post("/mail", isLoggedIn, (req, res) => {
       console.log(err);
     } else {
       let mailOptions = {
-        from: "sampreeth0203@gmail.com",
+        from: "meetingscheduler2000@gmail.com",
         subject: foundmeeting[0].title,
         text: foundmeeting[0].message,
       };
@@ -89,7 +89,7 @@ router.post("/individualMail", isLoggedIn, (req, res) => {
   console.log(req.body.individualMail);
   var idName = req.body.individualMail["id"];
   let mailOptions = {
-    from: "sampreeth0203@gmail.com",
+    from: "meetingscheduler2000@gmail.com",
     to: req.body.individualMail["email"],
     subject: req.body.individualMail["subject"],
     text: req.body.individualMail["text"],
