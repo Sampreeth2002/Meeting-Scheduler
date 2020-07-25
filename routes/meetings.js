@@ -2,6 +2,10 @@ var express = require("express");
 var router = express.Router();
 var Schedule = require("../models/meeting");
 
+router.get("/", (req, res) => {
+  res.redirect("/meeting");
+});
+
 router.get("/meeting", isLoggedIn, (req, res) => {
   console.log(req.user);
   if (req.isAuthenticated()) {
