@@ -15,7 +15,9 @@ var mailRoutes = require("./routes/mail");
 var indexRoutes = require("./routes/index");
 
 //APP CONFIG
-mongoose.connect("mongodb://localhost/meeting_schedular");
+mongoose.connect(
+  "mongodb+srv://admin-sampreeth:test123@cluster0.1dzza.mongodb.net/meeting_schedular"
+);
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
