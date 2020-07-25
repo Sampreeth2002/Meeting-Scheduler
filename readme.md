@@ -1,3 +1,4 @@
+First after downloading the file go to index.js and at line 73 remove '*********' and type "sam@2002" and then it will work .
 This project is called Meeting Schedular.
 In this project an organiser can organise meeting and add members to the meeting.The organiser can send a conformation , reminder mail to the members.
 After the meeting the organiser can even send attendece mail to members present in the meeting.
