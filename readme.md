@@ -1,3 +1,6 @@
+### VIDEO DEMO
+*VIDEO DEMO :- https://www.youtube.com/watch?v=LpD63XqEKAc*
+
 This project is called Meeting Schedular.
 In this project an organiser can organise meeting and add members to the meeting.The organiser can send a conformation , reminder mail to the members.
 After the meeting, the organizer can even send attendance mail to members present in the meeting.
@@ -14,4 +17,4 @@ To mark attendance of the meeting you can send a mail to each individual and it 
 You can edit the title, message of mail by clicking on edit and delete the meeting at any time.
 You can check the previous meetings by selecting on previous meetings.
 The meeting will automatically appear in previous meetings after the meetings gets started
-*VIDEO DEMO :- https://www.youtube.com/watch?v=LpD63XqEKAc*
+
