@@ -6,8 +6,8 @@ var nodemailer = require("nodemailer");
 let transpoter = nodemailer.createTransport({
   service: "gmail",
   auth: {
-    user: "meetingscheduler2000@gmail.com",
-    pass: "test123@",
+    user: "*****Enter your email account",
+    pass: "***** Enter your password",
   },
 });
 
@@ -35,7 +35,7 @@ router.post("/reminder", isLoggedIn, (req, res) => {
       console.log(err);
     } else {
       let mailOptions = {
-        from: "meetingscheduler2000@gmail.com",
+        from: "***** Enter your email account",
         subject: req.body.reminder.subject,
         text: req.body.reminder.message,
       };
